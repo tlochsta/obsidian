@@ -13,10 +13,10 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-new Easyviolet({
+const ez = new Easyviolet({
   server: server
 });
-
+ez.httpServer(app.listen(80));
 server.listen(8080, () => {
-  console.log(`Your easyviolet demo is running on port ${server.address().port}`);
+  console.log(`Obsidian is running on port ${server.address().port}`);
 });
