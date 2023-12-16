@@ -16,5 +16,5 @@ app.get('/', (req, res) => {
 const ez = new Easyviolet({
   server: server
 });
-const server = app.listen(8080, () => console.log(`Obsidian is running on port ${server.address().port}`));
+const server = app.listen(1234, () => console.log(`Obsidian is running on port ${server.address().port}`));
 ez.httpServer(server);
