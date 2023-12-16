@@ -1,0 +1,9 @@
+<label><input id="cool"><button onclick="proxy();">proxy this thing</button></label>
+<script>
+async function proxy() {
+  await Easyviolet.registerSW();
+  Easyviolet.registerSW().then(() => console.log('yay!')).catch(e => console.log('An error occurred: ', e));
+  console.log(Easyviolet.getProxiedUrl(document.getElementById("cool")))
+}
+</script>
+<script src="/uv/ev.bundle.js"></script>
