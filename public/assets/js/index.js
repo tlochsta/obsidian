@@ -13,6 +13,17 @@ form.addEventListener('submit', async event => {
     });
 });
 }
+
+function openApp(url) {
+
+    window.navigator.serviceWorker.register('/sw.js', {
+        scope: __uv$config.prefix
+    }).then(() => {
+        location.href=__uv$config.prefix + __uv$config.encodeUrl(url);
+    });
+
+}
+
 function isUrl(val = "") {
   if (
     /^http(s?):\/\//.test(val) ||
@@ -21,3 +32,4 @@ function isUrl(val = "") {
     return true;
   return false;
 }
+
