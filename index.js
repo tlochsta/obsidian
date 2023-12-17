@@ -5,7 +5,7 @@ import createBareServer from "@tomphttp/bare-server-node"
 
 const port = "6969";
 const app = express();
-const __dirname = proccess.cwd();
+const __dirname = process.cwd();
 const server = http.createServer();
 const bareServer = createBareServer("/bare/");
 
