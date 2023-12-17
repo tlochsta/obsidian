@@ -1,5 +1,6 @@
 import express from "express";
 import http from "node:http";
+import path from "path";
 import ejs from "ejs";
 import createBareServer from "@tomphttp/bare-server-node"
 
