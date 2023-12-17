@@ -9,6 +9,8 @@ const __dirname = proccess.cwd();
 const server = http.createServer();
 const bareServer = createBareServer("/bare/");
 
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -40,7 +42,7 @@ server.on("upgrade", (req, socket, head) => {
 });
 
 server.on("listening", () => {
-  console.log(`Snorlax's Cave listening on port ${port}`);
+  console.log(`obsidian listening on port ${port}`);
 });
 
 server.listen({
