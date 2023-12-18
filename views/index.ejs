@@ -1,141 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="night" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-    center {
-        display: flex;
-    justify-content: center;
-    }
-            .container {
-            display:flex;width: 500px;
-            position: relative;
-        }
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Obsidian</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.20/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        input {
-        font-family: 'Raleway', sans-serif;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 20px; /* Adjust the values to control the corner roundness */
-            outline: none;
-            width: 350px;
-        }
-
-        button {
-        font-family: 'Raleway', sans-serif;
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 0 20px 20px 0; /* Adjust the values to control the corner roundness */
-            background-color: #121212;
-            color: #ccc;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        button:hover {
-        	transition: 0.3s;
-            border-color: #121212;
-            background-color: #cccccc;
-            color: #121212;
-        }
-
-        /* Optional: Style for better appearance */
-        input, button {
-            font-size: 16px;
-        }
-        body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Raleway', sans-serif;
-    }
-
-    .center {
-    padding: 100px;
-    filter: drop-shadow(5px 5px 10px #000000);
-    border-radius: 25px;
-    background-color: rgba(208,206,195,.5);
-      width: 300px; /* Set the width of your div */
-      height: 200px; /* Set the height of your div */
-      text-align: center;
-      color: white;
-      
-    }
-h1 {
-margin-bottom: 0px;
-	font-size: 50pt;
-}
-body {
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    position: relative;
-    overflow: hidden; /* Add this line to prevent the pseudo-element from causing scrollbars */
-
-    /* Background Animation */
-
-    -webkit-animation: 10s linear 0s normal none infinite animate;
-    -moz-animation: 10s linear 0s normal none infinite animate;
-    -ms-animation: 10s linear 0s normal none infinite animate;
-    -o-animation: 10s linear 0s normal none infinite animate;
-    animation: 10s linear 0s normal none infinite animate;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: url('https://gstile.com/wp-content/uploads/2021/05/Jet_Black_3x12-1.jpg') repeat 0 0;
-    -webkit-filter: blur(10px); /* Adjust the pixel value to control the blur intensity */
-    filter: blur(10px); /* Standard syntax */
-}
-
-/* Background Animation Keyframes */
-@-webkit-keyframes animate {
-    from { background-position: 0 0; }
-    to { background-position: 500px 0; }
-}
-
-@-moz-keyframes animate {
-    from { background-position: 0 0; }
-    to { background-position: 500px 0; }
-}
-
-@-ms-keyframes animate {
-    from { background-position: 0 0; }
-    to { background-position: 500px 0; }
-}
-
-@-o-keyframes animate {
-    from { background-position: 0 0; }
-    to { background-position: 500px 0; }
-}
-
-@keyframes animate {
-    from { background-position: 0 0; }
-    to { background-position: 500px 0; }
-}
-
-/* Rest of your existing styles... */
-</style>
 </head>
 <body>
-    <div class="center"><h1>Obsidian</h1>    <center><form class="container">
-        <input type="text" placeholder="Search the web freely">
-        <button type="submit">Go</button>
-    </form></center></div>
+   <div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+      <li><a href="/games">Games</a></li>
+      <li><a href="/apps">Apps</a></li>
+      <li><a href="/emulator">Emulator</a></li>
+      </ul>
+    </div>
+    <a class="btn btn-ghost text-xl"><i class="fa-solid fa-globe"></i></a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="/games">Games</a></li>
+      <li><a href="/apps">Apps</a></li>
+      <li><a href="/emulator">Emulator</a></li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <a class="btn" href="https://discord.gg/EfD3GZ4DuA" ><i class="fa-brands fa-discord"></i></a>
+  </div>
+</div>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content text-center">
+    <div class="max-w-md">
+      <h1 class="text-7xl font-bold">Obsidian</h1><br>
+<form class="join">
+          <input class="input input-bordered w-full join-item" placeholder="Search the web freely"/>
+          <button type="submit" style="border: 1px solid; border-color: var(--fallback-bc,oklch(var(--bc)/.2));border-radius: var(--rounded-btn,.5rem);border-top-left-radius: 0;border-bottom-left-radius: 0;" class="btn join-item btn-bordered">Go</button>
+
+        </form> 
+    </div>
+  </div>
+</div>
 <script src="/assets/js/index.js"></script>
 <script src="/uv/uv.bundle.js"></script>
 <script src="/uv/uv.config.js"></script>
