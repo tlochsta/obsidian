@@ -1,155 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="night" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>obsidian games</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Obsidian Games</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.20/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        font-family: 'Raleway', sans-serif;
-        overflow: hidden; /* Add this line to prevent the pseudo-element from causing scrollbars */
-        -webkit-animation: 10s linear 0s normal none infinite animate;
-        -moz-animation: 10s linear 0s normal none infinite animate;
-        -ms-animation: 10s linear 0s normal none infinite animate;
-        -o-animation: 10s linear 0s normal none infinite animate;
-        animation: 10s linear 0s normal none infinite animate;
-    }
-
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: url('https://gstile.com/wp-content/uploads/2021/05/Jet_Black_3x12-1.jpg') repeat 0 0;
-        -webkit-filter: blur(10px); /* Adjust the pixel value to control the blur intensity */
-        filter: blur(10px); /* Standard syntax */
-    }
-
-    /* Background Animation Keyframes */
-    @-webkit-keyframes animate {
-        from { background-position: 0 0; }
-        to { background-position: 500px 0; }
-    }
-
-    @-moz-keyframes animate {
-        from { background-position: 0 0; }
-        to { background-position: 500px 0; }
-    }
-
-    @-ms-keyframes animate {
-        from { background-position: 0 0; }
-        to { background-position: 500px 0; }
-    }
-
-    @-o-keyframes animate {
-        from { background-position: 0 0; }
-        to { background-position: 500px 0; }
-    }
-
-    @keyframes animate {
-        from { background-position: 0 0; }
-        to { background-position: 500px 0; }
-    }
-
-    /* Button Styles */
-    .container {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    input {
-        font-family: 'Raleway', sans-serif;
-        padding: 15px;
-        border: 1px solid #ccc;
-        border-radius: 20px; /* Adjust the values to control the corner roundness */
-        outline: none;
-        width: 350px;
-    }
-
-    .btn-container {
-        display: flex;
-        margin-top: 20px;
-    }
-
- 
-    .btn-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    .btn {
-        font-family: 'Raleway', sans-serif;
-        padding: 15px;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        background-color: #121212;
-        color: #ccc;
-        cursor: pointer;
-        transition: 0.3s;
-        margin: 5px;
-        flex: 1;
-        max-width: 150px; /* Adjust the maximum width of the buttons */
-    }
-
-    .btn:hover {
-        transition: 0.3s;
-        transform: scale(1.1);
-        border-color: #121212;
-        background-color: #cccccc;
-        color: #121212;
-    }
-
-    /* Optional: Style for better appearance */
-    input, button {
-        font-size: 16px;
-    }
-
-    .center {
-        padding: 100px;
-        filter: drop-shadow(5px 5px 10px #000000);
-        border-radius: 25px;
-        background-color: rgba(208, 206, 195, .5);
-        width: 300px; /* Set the width of your div */
-        height: 200px; /* Set the height of your div */
-        text-align: center;
-        color: white;
-    }
-
-    h1 {
-        margin-bottom: 0px;
-        font-size: 50pt;
-    }
-    </style>
 </head>
 <body>
-    <div class="center">
-    <p style="margin-top: 0;margin:0;"><a href="/">go back</a></p>
-        <h1 style="margin-top: 0;">Obsidian</h1>
-        <div class="btn-container">
-            <button onclick="openApp('https://now.gg/apps/roblox-corporation/5349/roblox.html')" class="btn">ROBLOX</button>
-            <button onclick="openApp('https://client.tlochsta.dev/compiled/web')" class="btn">Minecraft 1.5</button>
-                        <button onclick="openApp('https://www.nvidia.com/en-us/geforce-now/fortnite-mobile/')" class="btn">Fortnite (GFORCE)</button>
-                                                <button onclick="openApp('https://www.xbox.com/en-us/play/games/fortnite/bt5p2x999vh2')" class="btn">Fortnite (XBOX)</button>
-            <!-- Add more buttons as needed -->
-        </div>
+   <div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+      <li><a href="/games">Games</a></li>
+      <li><a href="/apps">Apps</a></li>
+      <li><a href="/emulator">Emulator</a></li>
+      </ul>
     </div>
-    <script src="/assets/js/index.js"></script>
-    <script src="/uv/uv.bundle.js"></script>
-    <script src="/uv/uv.config.js"></script>
+    <a class="btn btn-ghost text-xl"><i class="fa-solid fa-globe"></i></a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="/games">Games</a></li>
+      <li><a href="/apps">Apps</a></li>
+      <li><a href="/emulator">Emulator</a></li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <a class="btn" href="https://discord.gg/EfD3GZ4DuA" ><i class="fa-brands fa-discord"></i></a>
+  </div>
+</div>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content text-center">
+    <div class="max-w-md">
+      <h1 class="text-7xl font-bold">Obsidian</h1><h1 class="text-xl font-bold">Games</h1><br>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+  <button class="btn btn-primary" onclick="openApp('https://now.gg/apps/roblox-corporation/5349/roblox.html')">ROBLOX</button>
+  <button class="btn btn-primary" onclick="openApp('https://client.tlochsta.dev/compiled/web')">Minecraft 1.5</button>
+  <button class="btn btn-primary" onclick="openApp('https://www.nvidia.com/en-us/geforce-now/fortnite-mobile/')" >Fortnite (GFORCE)</button>
+  <button class="btn btn-primary" onclick="openApp('https://www.xbox.com/en-us/play/games/fortnite/bt5p2x999vh2')">Fortnite (XBOX)</button>
+  <!-- Add more buttons as needed -->
+</div>
+
+    </div>
+  </div>
+</div>
+<script src="/assets/js/index.js"></script>
+<script src="/uv/uv.bundle.js"></script>
+<script src="/uv/uv.config.js"></script>
 </body>
 </html>
