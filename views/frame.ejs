@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Obsidian</title>
+        <style type="text/css">
+            body, html
+            {
+                margin: 0; padding: 0; height: 100%; overflow: hidden;
+            }
+
+            #content
+            {
+                position:absolute; left: 0; right: 0; bottom: 0; top: 0px; 
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <iframe width="100%" height="100%" frameborder="0" id="pf" src=""></iframe>
+        </div>
+        <script>
+const urlParams = new URLSearchParams(window.location);
+const url = urlParams.get('url');
+
+    window.navigator.serviceWorker.register('/sw.js', {
+        scope: __uv$config.prefix
+    }).then(() => {
+        document.getElementById("pf").src=__uv$config.prefix + __uv$config.encodeUrl(url);
+    });
+
+</script>
+    </body>
+</html>
