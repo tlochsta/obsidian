@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 app.get('/pf', (req, res) => {
-  res.render('frame');
+  res.render('frame', { url: req.query.url });
 });
 app.get('/games', (req, res) => {
   res.render('games');
