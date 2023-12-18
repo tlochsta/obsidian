@@ -1,7 +1,7 @@
 const form = document.querySelector('form');
 const input = document.querySelector('input');
 function frameLoad() {
-    const urlParams = new URLSearchParams(window.location);
+const urlParams = new URLSearchParams(window.location.search);
 const url = urlParams.get('url');
 
     window.navigator.serviceWorker.register('/sw.js', {
