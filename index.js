@@ -28,6 +28,9 @@ app.get('/', (req, res) => {
 app.get('/pf', (req, res) => {
   res.render('frame');
 });
+app.get('/games', (req, res) => {
+  res.render('games');
+});
 
 server.on("request", (req, res) => {
   if (bareServer.shouldRoute(req)) {
