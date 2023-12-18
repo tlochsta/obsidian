@@ -1,8 +1,7 @@
 const form = document.querySelector('form');
 const input = document.querySelector('input');
-function frameLoad() {
-const urlParams = new URLSearchParams(window.location.search);
-const url = urlParams.get('url');
+function frameLoad(url) {
+
 
     window.navigator.serviceWorker.register('/sw.js', {
         scope: __uv$config.prefix
