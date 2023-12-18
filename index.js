@@ -25,6 +25,9 @@ app.set('views', __dirname + '/views');
 app.get('/', (req, res) => {
   res.render('index');
 });
+app.get('/pf', (req, res) => {
+  res.render('frame');
+});
 
 server.on("request", (req, res) => {
   if (bareServer.shouldRoute(req)) {
