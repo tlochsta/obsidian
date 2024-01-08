@@ -182,12 +182,7 @@ font-family: 'Inter', sans-serif;
     saveButton.onclick = function() {
       saveChanges(this.parentElement.parentElement);
     };
-    const openButton = document.createElement('button');
-    openButton.className = 'text-purple-700';
-    openButton.innerHTML = '<i class="fa-solid fa-up-right-from-square"></i>';
-    openButton.onclick = function() {
-      openApp(this.parentElement.parentElement);
-    };
+
     const deleteButton = document.createElement('button');
     deleteButton.className = 'text-red-700';
     deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
@@ -196,7 +191,6 @@ font-family: 'Inter', sans-serif;
     };
     newBookmarkDiv.appendChild(titleDiv);
     buttonGroupDiv.appendChild(saveButton);
-buttonGroupDiv.appendChild(openButton);
     buttonGroupDiv.appendChild(deleteButton);
     newBookmarkDiv.appendChild(buttonGroupDiv);
     bookmarksContainer.appendChild(newBookmarkDiv);
