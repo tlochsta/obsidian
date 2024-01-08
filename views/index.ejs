@@ -1,55 +1,248 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="night" >
+<html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Obsidian</title>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.20/dist/full.min.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
 
+    <link rel="stylesheet" href="styles.css">
+     <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+font-family: 'Inter', sans-serif;
+}
+html,body {
+font-family: 'Inter', sans-serif;
+}
+</style>
+  <style>
+    .modal {
+      transition: opacity 0.25s ease;
+    }
+    body.modal-active {
+      overflow-x: hidden;
+      overflow-y: visible !important;
+    }
+  </style>
+    <title>Obsidian</title>
 </head>
-<body>
-   <div class="navbar bg-base-100">
-  <div class="navbar-start">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-      <li><a href="/games">Games</a></li>
-      <li><a href="/apps">Apps</a></li>
-      <li><a href="/emulator">Emulator</a></li>
-      </ul>
-    </div>
-    <a class="btn btn-ghost text-xl" href="/"><i class="fa-solid fa-globe"></i></a>
-  </div>
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
-      <li><a href="/games">Games</a></li>
-      <li><a href="/apps">Apps</a></li>
-      <li><a href="/emulator">Emulator</a></li>
-    </ul>
-  </div>
-  <div class="navbar-end">
-    <a class="btn" href="https://discord.gg/EfD3GZ4DuA" ><i class="fa-brands fa-discord"></i></a>
-  </div>
-</div>
-<div class="hero min-h-screen bg-base-200">
-  <div class="hero-content text-center">
-    <div class="max-w-md">
-      <h1 class="text-7xl font-bold">Obsidian</h1><br>
-<form class="join">
-          <input class="input input-bordered w-full join-item" placeholder="Search the web freely"/>
-          <button type="submit" style="border: 1px solid; border-color: var(--fallback-bc,oklch(var(--bc)/.2));border-radius: var(--rounded-btn,.5rem);border-top-left-radius: 0;border-bottom-left-radius: 0;" class="btn join-item btn-bordered">Go</button>
+<body class="bg-gradient-to-br from-purple-900 to-black">
+<!-- bookmark stuff -->
 
-        </form> 
+<div style="z-index: 100301020312301023010230021" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+  <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+
+  <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+
+    <div class="modal-content py-4 text-left px-6">
+      <div class="flex justify-between items-center pb-3">
+        <p class="text-2xl text-black font-bold">Bookmarks</p>
+        <div class="modal-close cursor-pointer z-50">
+          <svg class="fill-current text-purple-700" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div class="flex justify-between items-center border-b py-2">
+          <div class="flex flex-col">
+            <p class="text-black" contenteditable="true">Google</p>
+            <p class="text-gray-500" contenteditable="true">https://www.google.com</p>
+          </div>
+          <div class="gap-4">
+                    <button class="text-purple-700" onclick="openApp(this.parentElement)">
+            <i class="fas fa-up-right-from-square"></i>
+          </button>
+          <button class="text-purple-700" onclick="saveChanges(this.parentElement)">
+            <i class="fas fa-save"></i>
+          </button></div>
+        </div>
+
+      </div>
+
+      <div class="flex justify-end pt-2 gap-2">
+              <button class="px-4 bg-purple-700 p-3 rounded-lg text-white hover:bg-purple-600">Add New</button>
+        <button class="modal-close px-4 bg-purple-700 p-3 rounded-lg text-white hover:bg-purple-600">Close</button>
+      </div>
     </div>
   </div>
 </div>
-<script src="/assets/js/index.js"></script>
+
+<!-- end of bookmark stuff -->
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+            <div class="mb-6">
+                <label for="inputField" class="block text-purple-700 text-5xl mb-5 text-center justify-center font-bold">Obsidian</label>
+                <div class="relative">
+                    <input type="text" placeholder="Search the web freely" id="inputField" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-700 transition-all duration-300">
+                    <button type="submit" class="absolute right-0 top-0 bottom-0 px-3 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-r-md">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="flex space-x-2">
+                <button id="settingsButton" class="modal-open group relative w-full text-center justify-center flex items-center px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-md">
+                    <i class="fa-solid fa-bookmark mr-2"></i> Bookmarks
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/index.js"></script>
 <script src="/uv/uv.bundle.js"></script>
 <script src="/uv/uv.config.js"></script>
+     <p class="absolute bottom-0 right-0 text-sm text-white p-2">v2.0</p>
+  <script>
+    var openmodal = document.querySelectorAll('.modal-open')
+    for (var i = 0; i < openmodal.length; i++) {
+      openmodal[i].addEventListener('click', function(event){
+    	event.preventDefault()
+    	toggleModal()
+      })
+    }
+    
+    const overlay = document.querySelector('.modal-overlay')
+    overlay.addEventListener('click', toggleModal)
+    
+    var closemodal = document.querySelectorAll('.modal-close')
+    for (var i = 0; i < closemodal.length; i++) {
+      closemodal[i].addEventListener('click', toggleModal)
+    }
+    
+    document.onkeydown = function(evt) {
+      evt = evt || window.event
+      var isEscape = false
+      if ("key" in evt) {
+    	isEscape = (evt.key === "Escape" || evt.key === "Esc")
+      } else {
+    	isEscape = (evt.keyCode === 27)
+      }
+      if (isEscape && document.body.classList.contains('modal-active')) {
+    	toggleModal()
+      }
+    };
+    
+    
+    function toggleModal () {
+      const body = document.querySelector('body')
+      const modal = document.querySelector('.modal')
+      modal.classList.toggle('opacity-0')
+      modal.classList.toggle('pointer-events-none')
+      body.classList.toggle('modal-active')
+    }
+   
+  </script>
+  <script>
+  function saveChanges(parentElement) {
+    const titleElement = parentElement.querySelector('.text-black');
+    const urlElement = parentElement.querySelector('.text-gray-500');
+
+    const title = titleElement.textContent;
+    const url = urlElement.textContent;
+
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+    const existingIndex = bookmarks.findIndex(b => b.title === title && b.url === url);
+
+    if (existingIndex !== -1) {
+      bookmarks[existingIndex] = { title, url };
+    } else {
+      bookmarks.push({ title, url });
+    }
+
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+  }
+
+  function deleteBookmark(parentElement) {
+    const titleElement = parentElement.querySelector('.text-black');
+    const urlElement = parentElement.querySelector('.text-gray-500');
+
+    const title = titleElement.textContent;
+    const url = urlElement.textContent;
+
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+    const updatedBookmarks = bookmarks.filter(b => b.title !== title || b.url !== url);
+
+    localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks));
+    parentElement.remove();
+  }
+
+  function addNewBookmark() {
+    const bookmarksContainer = document.querySelector('.flex.flex-col');
+    const newBookmarkDiv = document.createElement('div');
+    newBookmarkDiv.className = 'flex justify-between items-center border-b py-2';
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'flex flex-col';
+    titleDiv.innerHTML = '<p class="text-black" contenteditable="true">Bookmark Title</p>';
+    titleDiv.innerHTML += '<p class="text-gray-500" contenteditable="true">Bookmark URL</p>';
+    const buttonGroupDiv = document.createElement('div');
+    buttonGroupDiv.className = 'flex gap-2';
+    const saveButton = document.createElement('button');
+    saveButton.className = 'text-purple-700';
+    saveButton.innerHTML = '<i class="fas fa-save"></i>';
+    saveButton.onclick = function() {
+      saveChanges(this.parentElement.parentElement);
+    };
+    const deleteButton = document.createElement('button');
+    deleteButton.className = 'text-red-700';
+    deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+    deleteButton.onclick = function() {
+      deleteBookmark(this.parentElement.parentElement);
+    };
+    newBookmarkDiv.appendChild(titleDiv);
+    buttonGroupDiv.appendChild(saveButton);
+    buttonGroupDiv.appendChild(deleteButton);
+    newBookmarkDiv.appendChild(buttonGroupDiv);
+    bookmarksContainer.appendChild(newBookmarkDiv);
+  }
+  function loadBookmarks() {
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+
+    const bookmarksContainer = document.querySelector('.flex.flex-col');
+    bookmarksContainer.innerHTML = '';
+
+    bookmarks.forEach(bookmark => {
+      const bookmarkDiv = document.createElement('div');
+      bookmarkDiv.className = 'flex justify-between items-center border-b py-2';
+
+      const titleDiv = document.createElement('div');
+      titleDiv.className = 'flex flex-col';
+      titleDiv.innerHTML = `<p class="text-black" contenteditable="true">${bookmark.title}</p>`;
+      titleDiv.innerHTML += `<p class="text-gray-500" contenteditable="true">${bookmark.url}</p>`;
+      const buttonGroupDiv = document.createElement('div');
+      buttonGroupDiv.className = 'flex gap-2';
+      const saveButton = document.createElement('button');
+      saveButton.className = 'text-purple-700';
+      saveButton.innerHTML = '<i class="fas fa-save"></i>';
+      saveButton.onclick = function() {
+        saveChanges(this.parentElement.parentElement);
+      };
+      const openButton = document.createElement('button');
+      openButton.className = 'text-purple-700';
+      openButton.innerHTML = '<i class="fa-solid fa-up-right-from-square"></i>';
+      openButton.onclick = function() {
+        openApp(this.parentElement.parentElement);
+      };
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'text-red-700';
+      deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+      deleteButton.onclick = function() {
+        deleteBookmark(this.parentElement.parentElement);
+      };
+
+      bookmarkDiv.appendChild(titleDiv);
+      buttonGroupDiv.appendChild(saveButton);
+      buttonGroupDiv.appendChild(openButton);
+      buttonGroupDiv.appendChild(deleteButton);
+      bookmarkDiv.appendChild(buttonGroupDiv);
+
+      bookmarksContainer.appendChild(bookmarkDiv);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    loadBookmarks();
+  });
+  const addNewButton = document.querySelector('.flex.justify-end.pt-2.gap-2 button:first-child');
+  addNewButton.addEventListener('click', addNewBookmark);
+</script>
 </body>
 </html>
