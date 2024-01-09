@@ -82,6 +82,28 @@ font-family: 'Inter', sans-serif;
 <script>
 const input = document.getElementById("inputField");
 
+function aboutBlank(inputValue) {
+  const newTab = window.open('');
+  newTab.document.body.innerHTML = `
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Test Layout</title>
+        <style type="text/css">
+            body, html
+            {
+                margin: 0; padding: 0; height: 100%; overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <iframe width="100%" height="100%" src="${inputValue}" />
+    </body>
+</html>
+
+    `;
+}
+
 function isURL(text) {
     // Regular expression to check if the input starts with http:// or https://
     const urlRegex = /^(http|https):\/\/(.*)$/;
@@ -91,10 +113,10 @@ function isURL(text) {
 function proxy() {
     const inputValue = input.value.trim();
     if (isURL(inputValue)) {
-        window.location.href = "/pf?url=" + inputValue;
+        aboutBlank(document.URL + "/pf?url=" + inputValue);
     } else {
         const googleSearchUrl = "https://www.google.com/search?q=" + encodeURIComponent(inputValue);
-        window.location.href = "/pf?url=" + googleSearchUrl;
+        aboutBlank(document.URL + "/pf?url=" + googleSearchUrl);
     }
 }
 
