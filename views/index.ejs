@@ -74,12 +74,32 @@ font-family: 'Inter', sans-serif;
         <div class="bg-white p-8 rounded-lg shadow-lg w-96">
             <div class="mb-6">
                 <label for="inputField" class="block text-purple-700 text-5xl mb-5 text-center justify-center font-bold">Obsidian</label>
-                <form class="relative">
+                <div class="relative">
                     <input type="text" placeholder="Search the web freely" id="inputField" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-700 transition-all duration-300">
-                    <button type="submit" class="absolute right-0 top-0 bottom-0 px-3 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-r-md">
+                    <button onclick="proxy();" class="absolute right-0 top-0 bottom-0 px-3 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-r-md">
                         <i class="fa fa-search"></i>
                     </button>
-                </form>
+<script>
+const input = document.getElementById("inputField");
+
+function isURL(text) {
+    // Regular expression to check if the input starts with http:// or https://
+    const urlRegex = /^(http|https):\/\/(.*)$/;
+    return urlRegex.test(text);
+}
+
+function proxy() {
+    const inputValue = input.value.trim();
+    if (isURL(inputValue)) {
+        window.location.href = "/pf?url=" + inputValue;
+    } else {
+        const googleSearchUrl = "https://www.google.com/search?q=" + encodeURIComponent(inputValue);
+        window.location.href = googleSearchUrl;
+    }
+}
+
+</script>
+                </div>
             </div>
             <div class="flex space-x-2">
                 <button id="settingsButton" class="modal-open group relative w-full text-center justify-center flex items-center px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-md">
