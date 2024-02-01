@@ -113,10 +113,10 @@ function isURL(text) {
 function proxy() {
     const inputValue = input.value.trim();
     if (isURL(inputValue)) {
-        aboutBlank(document.URL + "/pf?url=" + inputValue);
+        aboutBlank(window.location.href + "/pf?url=" + inputValue);
     } else {
         const googleSearchUrl = "https://www.google.com/search?q=" + encodeURIComponent(inputValue);
-        aboutBlank(document.URL + "/pf?url=" + googleSearchUrl);
+        aboutBlank(window.location.href + "/pf?url=" + googleSearchUrl);
     }
 }
 
